@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const PORT = process.env.PORT || 5000;
 
 dotenv.config();
 const app = express();
@@ -59,6 +60,6 @@ function errorHandler(err, req, res, next) {
   }
 }
 app.use(errorHandler);
-app.listen(4000, () => {
+app.listen(PORT, () => {
   console.log("app is listening on port 4000");
 });
