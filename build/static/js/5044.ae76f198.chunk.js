@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktalent_recruiter=self.webpackChunktalent_recruiter||[]).push([[5044],{5044:function(e,t,r){r.r(t);r(2791);var n=r(184);t.default=function(){return(0,n.jsx)("div",{className:"text-2xl text-center",children:"coming soon message if recruiter sent"})}}}]);
+//# sourceMappingURL=5044.ae76f198.chunk.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktalent_recruiter=self.webpackChunktalent_recruiter||[]).push([[4705],{4705:function(e,r,t){t.r(r);t(2791);var n=t(184);r.default=function(){return(0,n.jsx)("div",{children:"this is review page coming soon"})}}}]);
+//# sourceMappingURL=4705.7d1a97b7.chunk.js.map
