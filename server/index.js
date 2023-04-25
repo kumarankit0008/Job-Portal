@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   res.json({ success: "server is running" });
 });
 
-//import all route
+//import all routes 
 const blogsRoute = require("./routers/blogsRoute");
 const userRoute = require("./routers/userRoute");
 const adminUsers = require("./routers/adminUsers");
