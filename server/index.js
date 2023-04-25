@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.static("uploads")); //image upload
 app.use(cookieParser());
-app.use(cors());
+app.use(cors();
 // database connection is here
 const DB_URI = process.env.MONGO_URI;
 
