@@ -5,20 +5,22 @@ const emailSender = async (toEmail, subject, message) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "rasel.mahmud.swpu@gmail.com",
+        user: "ournewsbook@gmail.com",
         pass: `${process.env.EMAIL_HOST_PASS}`,
       },
     });
 
+    console.log(process.env.EMAIL_HOST_PASS);
+
     const mailOptions = {
-      from: "rasel.mahmud.swpu@gmail.com",
+      from: "ournewsbook@gmail.com",
       to: `${toEmail}`,
       subject: `${subject}`,
       html: `${message}`,
     };
     return await transporter.sendMail(mailOptions);
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     return error;
   }
 };

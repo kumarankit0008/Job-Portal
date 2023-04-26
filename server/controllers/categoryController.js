@@ -6,6 +6,7 @@ const getAllCategory = asyncHandler(async (req, res, next) => {
   console.log(req.user);
   try {
     const all_category = await Category.find();
+    console.log(all_category);
     res.status(200).json({
       success: true,
       all_category,

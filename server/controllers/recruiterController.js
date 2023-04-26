@@ -5,10 +5,9 @@ const AppliedJob = require("../schemas/appliedJobSchema");
 // @desc Get Job All Via Applicant Id
 const getJobByRecruiter = asyncHandler(async (req, res, next) => {
   try {
-    const getJobByRecruiter = await Job.find({ recruiter: req.user.id }).populate(
-      "requiter",
-      "_id name",
-    );
+    const getJobByRecruiter = await Job.find({
+      recruiter: req.user.id,
+    }).populate("requiter", "_id name");
     if (getJobByRecruiter) {
       res.status(200).json({
         JobByRecruiter: getJobByRecruiter,
@@ -46,25 +45,27 @@ const getApplicantByJob = asyncHandler(async (req, res, next) => {
 });
 
 // @desc Post New Job Controller
-const postJob = asyncHandler(async (req, res, next) => {
-  const newJob = await Job.create({ ...req.body, recruiter: req.user.id });
-  try {
-    console.log("new job", newJob);
-    if (newJob) {
-      res.status(200).json({
-        success: true,
-        message: "Successfully Create The Job",
-        newJob,
-      });
-    } else {
+const postJob = asyncHandler((req, res, next) => {
+  let userObj = {
+    ...req.body,
+    recruiter: req.user.id,
+  };
+
+  Job.create(userObj, (error, data) => {
+    console.log(userObj, error, data);
+    if (error) {
       res.status(400).json({
         success: false,
         message: "Something went wrong. Please try again",
       });
+    } else {
+      res.status(200).json({
+        success: true,
+        message: "Successfully Create The Job",
+        newJob: data,
+      });
     }
-  } catch (err) {
-    next(err);
-  }
+  });
 });
 
 // @desc  Delete Job Controller

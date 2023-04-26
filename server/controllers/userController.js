@@ -49,6 +49,7 @@ exports.loginUser = async (req, res, next) => {
   const { email, password } = req.body;
   let existingUser;
   try {
+    console.log(email);
     existingUser = await User.findOne({ email: email });
   } catch (error) {
     return new Error(error);

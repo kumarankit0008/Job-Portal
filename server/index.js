@@ -9,11 +9,12 @@ const PORT = process.env.PORT || 5000;
 dotenv.config();
 const app = express();
 // middleware
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("uploads")); //image upload
 app.use(cookieParser());
 app.use(cors());
+
 // database connection is here
 const DB_URI = process.env.MONGO_URI;
 
@@ -25,7 +26,7 @@ app.get("/", (req, res) => {
   res.json({ success: "server is running" });
 });
 
-//import all routes 
+//import all route
 const blogsRoute = require("./routers/blogsRoute");
 const userRoute = require("./routers/userRoute");
 const adminUsers = require("./routers/adminUsers");
@@ -52,14 +53,14 @@ app.use("/api/feature/jobs", featureJobsRoute);
 app.use("/api/create-payment", createPayment);
 
 // All default error handling function
-function errorHandler(err, req, res, next) {
-  if (res.headersSent) {
-    return next(err);
-  } else {
-    res.status(500).json({ error: err });
-  }
-}
-app.use(errorHandler);
+// function errorHandler(err, req, res, next) {
+//   if (res.headersSent) {
+//     return next(err);
+//   } else {
+//     res.status(500).json({ error: err });
+//   }
+// }
+// app.use(errorHandler);
 app.listen(PORT, () => {
-  console.log("app is listening on port 4000");
+  console.log("app is listening on port " + PORT);
 });

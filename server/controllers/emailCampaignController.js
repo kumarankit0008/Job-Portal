@@ -45,14 +45,12 @@ const emailNewsLetterSent = async (req, res, next) => {
     next(err);
   }
 };
-const emailNewsLetterConfirm = async (req, res, next) => {
-  try {
-    const { email } = req.body || {};
-    const result = await emails.create({ email });
-    res.status(200).json({ result });
-  } catch (err) {
-    next(err);
-  }
+const emailNewsLetterConfirm = (req, res, next) => {
+  const { email } = req.body || {};
+  emails.create({ email }, (error, data) => {
+    console.log(error);
+    res.status(200).json({ result: email });
+  });
 };
 module.exports = {
   emailNewsLetterSent,
